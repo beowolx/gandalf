@@ -10,6 +10,8 @@ Gandalf is built using the Rust [Leptos](https://github.com/leptos-rs/leptos) fr
 
 Style is made using [Tailwind CSS](https://tailwindcss.com/).
 
+![demo](https://github.com/LuisCardosoOliveira/gandalf/assets/61982523/561e584c-a6c4-4e63-8051-cd46c092bd6f)
+
 ## Installation
 
 To get started with Gandalf, you need to install the nightly version of [Rust](https://www.rust-lang.org/learn/get-started), install the `wasm32-unknown-unknown` target, Trunk and `cargo-leptos` tools.
