@@ -1,8 +1,14 @@
+
 # Gandalf
 
 Gandalf is an AI assistant chatbot leveraging the power of the [Llama2-Chat 7B](https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGMLL). Gandalf is a good alternative for those who don't want to run private data through a model like GPT. The model runs entirely in your computer.
 
 Gandalf is built using the Rust [Leptos](https://github.com/leptos-rs/leptos) framework, which is a full-stack, isomorphic Rust web framework leveraging fine-grained reactivity to build declarative user interfaces in WebAssembly.
+
+Style is made using [Tailwind CSS](https://tailwindcss.com/).
+
+![729027_An image of Gandalf from Lord of the Ring riding a_xl-beta-v2-2-2](https://github.com/LuisCardosoOliveira/gandalf/assets/61982523/6dd5084e-2031-401a-ab20-d79a91dadd26)
+
 
 ## LLaMa2-Chat
 
@@ -10,7 +16,7 @@ This project is a chatbot that uses the LLM LLaMa2-chat, a state-of-the-art larg
 
 ## How does it look like?
 
-Style is made using [Tailwind CSS](https://tailwindcss.com/).
+![Image 20-07-2023 at 09 01](https://github.com/LuisCardosoOliveira/gandalf/assets/61982523/85a76ab4-c7cf-4b70-acc5-1456221a6f7e)
 
 ## Installation
 
