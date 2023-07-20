@@ -8,20 +8,20 @@ pub async fn converse(cx: Scope, prompt: Conversation) -> Result<String, ServerF
     use actix_web::web::Data;
     use leptos_actix::extract;
     use llm::models::Llama;
+    use llm::KnownModel;
+
     let model = extract(cx, |data: Data<Llama>, _connection: ConnectionInfo| async {
         data.into_inner()
     })
     .await
-    .unwrap();
+    .expect("Failed to extract model");
 
-    use llm::KnownModel;
-    let character_name = "### Assistant";
-    let user_name = "### Human";
-    let persona = "A chat between a curious user and an artificial intelligence assistant. Imagine you are Gandalf, the wizard from 'The Lord of the Rings' series by J.R.R. Tolkien. The assistant gives helpful, detailed, and polite answers to the user's questions.";
+    let character_name = "Assistant";
+    let user_name = "User";
+    let system = "System: You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information. You should answer all the questions as if you were Gandalf, the wizard from Lord of the Rings, so adjust your ton of voice to match that.";
     let mut history = format!(
-        "{character_name}:Well met, friend of Middle-earth! What mysteries may the old wizard Gandalf unravel for you this day?\n\
-        {user_name}:What is the capital of Brazil?\n\
-        {character_name}:Brasília is the capital of Brazil.\n"
+        "{user_name}: What is the capital of Brazil?\n\
+        {character_name}: Brasília is the capital of Brazil.\n"
     );
 
     for message in prompt.messages.into_iter() {
@@ -40,12 +40,13 @@ pub async fn converse(cx: Scope, prompt: Conversation) -> Result<String, ServerF
     let mut buf = String::new();
 
     let mut session = model.start_session(Default::default());
+
     session
         .infer(
             model.as_ref(),
             &mut rng,
             &llm::InferenceRequest {
-                prompt: format!("{persona}\n{history}\n{character_name}:")
+                prompt: format!("{system}\n{history}\n{character_name}:")
                     .as_str()
                     .into(),
                 parameters: &llm::InferenceParameters::default(),
@@ -53,7 +54,7 @@ pub async fn converse(cx: Scope, prompt: Conversation) -> Result<String, ServerF
                 maximum_token_count: None,
             },
             &mut Default::default(),
-            inference_callback(String::from(user_name), &mut buf, &mut res),
+            conversation_inference_callback(String::from(user_name), &mut buf, &mut res),
         )
         .unwrap_or_else(|e| panic!("{e}"));
 
@@ -63,7 +64,7 @@ pub async fn converse(cx: Scope, prompt: Conversation) -> Result<String, ServerF
 cfg_if! {
     if #[cfg(feature = "ssr")] {
     use std::convert::Infallible;
-        fn inference_callback<'a>(
+        fn conversation_inference_callback<'a>(
             stop_sequence: String,
             buf: &'a mut String,
             out_str: &'a mut String,
