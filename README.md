@@ -1,7 +1,7 @@
 
 # Gandalf
 
-Gandalf is an AI assistant chatbot leveraging the power of the [Llama2-Chat 7B](https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGMLL). Gandalf is a good alternative for those who don't want to run private data through a model like GPT. The model runs entirely in your computer.
+Gandalf is an AI assistant chatbot leveraging the power of the [TheBloke/Llama-2-7B-Chat-GGML](https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML). Gandalf is a good alternative for those who don't want to run private data through a model like GPT. The model runs entirely in your computer.
 
 Gandalf is built using the Rust [Leptos](https://github.com/leptos-rs/leptos) framework, which is a full-stack, isomorphic Rust web framework leveraging fine-grained reactivity to build declarative user interfaces in WebAssembly.
 
