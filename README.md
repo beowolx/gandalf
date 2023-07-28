@@ -7,7 +7,7 @@ Gandalf is built using the Rust [Leptos](https://github.com/leptos-rs/leptos) fr
 
 Style is made using [Tailwind CSS](https://tailwindcss.com/).
 
-![729027_An image of Gandalf from Lord of the Ring riding a_xl-beta-v2-2-2](https://github.com/LuisCardosoOliveira/gandalf/assets/61982523/6dd5084e-2031-401a-ab20-d79a91dadd26)
+![An image of Gandalf from Lord of the Ring riding a crab](https://github.com/LuisCardosoOliveira/gandalf/assets/61982523/4ab0f3c4-6923-4087-a9d0-87b357570872)
 
 
 ## LLaMa2-Chat
